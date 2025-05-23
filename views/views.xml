@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- explicit form view definition -->
+    <record id="view_my_module_form" model="ir.ui.view">
+      <field name="name">my_module.form</field>
+      <field name="model">my_module.model</field>
+      <field name="arch" type="xml">
+        <form string="My Module">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="active"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit tree view definition -->
+    <record id="view_my_module_tree" model="ir.ui.view">
+      <field name="name">my_module.tree</field>
+      <field name="model">my_module.model</field>
+      <field name="arch" type="xml">
+        <tree string="My Module">
+          <field name="name"/>
+          <field name="description"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record id="action_my_module" model="ir.actions.act_window">
+      <field name="name">My Module</field>
+      <field name="res_model">my_module.model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="My Module" id="my_module.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="my_module.menu_1" parent="my_module.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="List" id="my_module.menu_1_list" parent="my_module.menu_1"
+              action="action_my_module"/>
+  </data>
+</odoo>
